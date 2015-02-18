@@ -3,11 +3,17 @@ var models = require('../models');
 exports.projectInfo = function(req, res) { 
   var projectID = req.params.id;
 
+  console.log(projectID);
   // query for the specific project and
   // call the following callback
+  models.Project
+    .find({"_id": projectID})
+    .exec(afterQuery);
 
   function afterQuery(err, projects) {
     if(err) console.log(err);
+    //console.log(res.json(projects[0]));
+    console.log(projects);
     res.json(projects[0]);
   }
 }
@@ -25,4 +31,13 @@ exports.deleteProject = function(req, res) {
 
   // find the project and remove it
   // YOU MUST send an OK response w/ res.send();
+  models.Project
+    .find({"_id": projectID})
+    .remove()
+    .exec(afterDelete);
+
+ function afterDelete(err,projects) {
+     if(err) console.log(err);
+     res.send(200);
+ }
 }

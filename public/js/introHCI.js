@@ -23,6 +23,7 @@ function initializePage() {
 
 		// How to respond to the GET request
 		function addProjectDetails(project_json) {
+            console.log("test1");
 			// We need to compute a display string for the date
 			// Search 'toLocaleDateString' online for more details.
 			var date_obj = new Date(project_json['date']);
@@ -51,6 +52,8 @@ function initializePage() {
 					window.location.href = '/';
 				});
 			});
+            console.log("test2");
+			// We need to compute a display string for the date
 		}
 
 		// issue the GET request
